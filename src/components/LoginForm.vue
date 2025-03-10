@@ -109,7 +109,7 @@ export default {
             ElMessage.error(response.data.msg);
           } else {
             ElMessage.success("登录成功");
-            document.cookie = "token=" + response.data.token;
+            document.cookie = "token=" + response.data.data;
             this.$router.push({ path: '/dashboard'});
           }
         })
