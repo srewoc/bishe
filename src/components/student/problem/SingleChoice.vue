@@ -1,8 +1,19 @@
 <template>
   <el-row style="width: 100%" class="first">
     <div class="question-container">
-      <h3 v-if="question" >{{ question.title }}</h3>
+      <h3 v-if="question" class="title">{{ question.title }}</h3>
       <el-radio-group class="optiongroup" v-model="select" v-if="question">
+<!--        <el-image-->
+<!--            style="width: 300px; height: 300px"-->
+<!--            :src="srcList[0]"-->
+<!--            :zoom-rate="1.2"-->
+<!--            :max-scale="7"-->
+<!--            :min-scale="0.2"-->
+<!--            :preview-src-list="srcList"-->
+<!--            show-progress-->
+<!--            :initial-index="0"-->
+<!--            fit="contian"-->
+<!--        />-->
         <el-radio
             label="A"
         >
@@ -30,9 +41,9 @@
 </template>
 
 <script setup>
-import {defineProps, ref} from 'vue'
+import {defineProps, ref, defineExpose} from 'vue'
 
-let select = ref();
+const select = ref('');
 
 // let currentQuestionIndex = 0;
 defineProps({
@@ -40,6 +51,10 @@ defineProps({
     type: Object,
     required: true
   }
+});
+
+defineExpose({
+  select
 });
 
 </script>
@@ -142,32 +157,17 @@ defineProps({
 <!--};-->
 <!--</script>-->
 
-<style scoped>
-/* 左侧题目 */
+<style>
 .question-container {
   padding: 20px;
   background-color: #fff;
 
 }
 
-.navigation-buttons {
-  margin-top: 20px;
-}
-
-.question-grid {
-  width: 200px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 每行 5 个题目 */
-  grid-gap: 10px;
-
-  .el-button {
-    margin-left: 0;
-  }
-}
 
 .question-grid .el-button {
-  width: 40px; /* 使按钮宽度自适应 */
-  height: 40px; /* 统一按钮高度 */
+  width: 40px;
+  height: 40px;
   padding: 0;
 }
 
@@ -176,14 +176,15 @@ defineProps({
   justify-content: center;
 }
 
-.second {
-  display: flex;
-  justify-content: center;
-}
 
 .optiongroup {
   display: grid;
 
+}
+
+.title{
+  width:700px;
+  overflow-wrap: break-word;
 }
 
 </style>

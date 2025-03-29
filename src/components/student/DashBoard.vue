@@ -1,7 +1,11 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header>Header</el-header>
+      <el-header class="header">
+        <div>
+          <el-avatar :icon="UserFilled"/>
+        </div>
+      </el-header>
 
 
       <el-container>
@@ -27,14 +31,15 @@
 
             <el-sub-menu index="2">
               <template #title>
-                <el-icon><icon-menu /></el-icon>
+                <el-icon>
+                  <icon-menu/>
+                </el-icon>
                 <span>开始刷题</span>
               </template>
               <el-menu-item index="/chapterselect">章节刷题</el-menu-item>
               <el-menu-item index="4">自定义刷题</el-menu-item>
 
             </el-sub-menu>
-
 
 
           </el-menu>
@@ -53,6 +58,7 @@
 import {
   Menu as IconMenu,
   Location,
+  UserFilled
 } from '@element-plus/icons-vue'
 
 // const handleOpen = (key, keyPath) => {

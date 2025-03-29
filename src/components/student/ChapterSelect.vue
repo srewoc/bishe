@@ -37,18 +37,17 @@ let questions = ref([]);
 const select = (val) => {
   axios.get('/api/chapter' + val).then((response) => {
     questions.value = response.data;
-    sessionStorage.setItem('questions', JSON.stringify(questions.value));
   })
+  sessionStorage.setItem('selectchapter', JSON.stringify(val));
 };
 
 const goToQuestion = (uid) => {
   router.push({
-    path: `/problems/${uid}`
+    path: `/problems`
   })
+  sessionStorage.setItem('selectprob', JSON.stringify(uid));
+
 }
-
-
-
 
 
 </script>
